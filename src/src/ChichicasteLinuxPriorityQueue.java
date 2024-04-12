@@ -10,13 +10,12 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class ChichicasteLinux {
-    //private HeapUsingIterativeBinaryTree<Integer, Process> processHeap;
+public class ChichicasteLinuxPriorityQueue {
     private PriorityQueue<Process> processHeap; 
 
-    public ChichicasteLinux() {
+    public ChichicasteLinuxPriorityQueue() {
         Comparator<Integer> priorityComparator = new ComparadorNumeros<>();
-        //this.processHeap = new HeapUsingIterativeBinaryTree<>(priorityComparator);
+        this.processHeap = new PriorityQueue<>(priorityComparator);
     }
 
     public void readProcesses(String filename) {
@@ -28,7 +27,7 @@ public class ChichicasteLinux {
                 String userName = parts[1];
                 int niceValue = Integer.parseInt(parts[2]);
                 Process process = new Process(processName, userName, niceValue);
-                processHeap.Insert(niceValue, process);
+                processHeap.add(process);
             }
         } catch (IOException e) {
             System.out.println("Error reading the file: " + e.getMessage());
