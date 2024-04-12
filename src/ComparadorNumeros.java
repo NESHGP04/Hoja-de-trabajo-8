@@ -1,4 +1,4 @@
-package src;
+  
 
 import java.util.Comparator;
 
@@ -12,6 +12,12 @@ import java.util.Comparator;
  */
 public class ComparadorNumeros<Integer> implements Comparator<Integer> {
 
+	
+	/** 
+	 * @param o1
+	 * @param o2
+	 * @return int
+	 */
 	@Override
 	public int compare(Integer o1, Integer o2) {
 		if ((int)o1 == (int)o2)

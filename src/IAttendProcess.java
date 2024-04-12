@@ -1,4 +1,4 @@
-package src;
+  
 
 public interface IAttendProcess {
     public void readProcesses(String filename);

@@ -2,7 +2,7 @@
  * MAIN
  */
 
- package src;
+   
 
  import java.io.BufferedReader;
  import java.io.FileReader;
@@ -18,6 +18,10 @@
         this.processQueue = new PriorityQueue<>(priorityComparator);
     }
 
+    
+    /** 
+     * @param filename
+     */
     @Override
     public void readProcesses(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
