@@ -2,18 +2,22 @@
  * MAIN
  */
 
-  
+import java.util.*;
 
 public class ChichicasteLinux {
 
     public static void main(String[] args) {
-        AttendProcessWithHeap system = new AttendProcessWithHeap();
-        AttendProcessWithPriorityQueue system2 = new AttendProcessWithPriorityQueue();
-        system.readProcesses("procesos.txt"); 
-        system.attendProcess(); 
+        Scanner sc = new Scanner(System.in);
 
-        system2.readProcesses("procesos.txt");
-        system2.attendProcess(); 
+        System.out.println("\n<<CHICHICASTELINUX>>");
+        System.out.println("Elija si quiere ordenar con Heap(1) o Priority Queue(2)");
+        int opc = sc.nextInt();
+
+        IAttendProcess attendProcess = FactoryAttends.getAttendingProcess(opc);
+        attendProcess.readProcesses("procesos.txt");
+        attendProcess.attendProcess();
+        
+        sc.close();
     }
 }
 
