@@ -4,52 +4,16 @@
 
 package src;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-
 public class ChichicasteLinux {
-    //private HeapUsingIterativeBinaryTree<Integer, Process> processHeap;
-    private PriorityQueue<Process> processHeap; 
 
-    public ChichicasteLinux() {
-        Comparator<Integer> priorityComparator = new ComparadorNumeros<>();
-        //this.processHeap = new HeapUsingIterativeBinaryTree<>(priorityComparator);
-    }
-
-    public void readProcesses(String filename) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String processName = parts[0];
-                String userName = parts[1];
-                int niceValue = Integer.parseInt(parts[2]);
-                Process process = new Process(processName, userName, niceValue);
-                processHeap.Insert(niceValue, process);
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading the file: " + e.getMessage());
-        }
-    }
-
-    public void attendProcess() {
-        while (!processHeap.isEmpty()) {
-            Process process = processHeap.remove();
-            if (process != null) {
-                int calculatedPriority = 20 + process.getNiceValue(); // PR = 20 + NI
-                calculatedPriority += 100;
-                System.out.println(process.getProcessName() + "," + process.getUserName() + "," + process.getNiceValue() + ",PR=" + calculatedPriority);
-            }
-        }
-    }
-    
     public static void main(String[] args) {
-        ChichicasteLinux system = new ChichicasteLinux();
+        AttendProcessWithHeap system = new AttendProcessWithHeap();
+        AttendProcessWithPriorityQueue system2 = new AttendProcessWithPriorityQueue();
         system.readProcesses("procesos.txt"); 
         system.attendProcess(); 
+
+        system2.readProcesses("procesos.txt");
+        system2.attendProcess(); 
     }
 }
 
